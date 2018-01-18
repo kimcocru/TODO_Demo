@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "budo .js --open --live --css=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css\" --title=\"Test\" -- -t [babelify --presets es2015]"
-  },
+    "dev": "budo .js --open --live --css=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css\" --title=\"Test\" -- -t [babelify --presets es2015]",
+    "start": "serve"},
   "keywords": [],
   "author": "",
   "license": "ISC",
