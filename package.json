@@ -6,12 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "budo . --open --live --css=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css\" --title=\"Test\" -- -t [babelify --presets es2015]",
-    "start": "serve"},
+    "start": "serve"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "yo-yo": "^1.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
