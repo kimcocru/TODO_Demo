@@ -1,4 +1,4 @@
-import html from 'yo-yo'
+var yo = require('yo-yo')
 
 
 var numbers = [] // start empty
