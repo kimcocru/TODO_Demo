@@ -1,6 +1,6 @@
-# Project Title
+# VanillaJS-Demo
 
-One Paragraph of project description goes here
+This version is an small application made with VanillaJS.
 
 ## Getting Started
 
@@ -8,27 +8,37 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
+
 What things you need to install the software and how to install them
 
 ```
-Give examples
+uuid package
+
+serve to run the app.
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+Install serve
 
 ```
-Give the example
-```
-
-And repeat
+npm install serve
 
 ```
-until finished
+In the terminal type
 ```
+serve
+
+```
+
+Now install uuid as a DEv-dependency
+```
+npm install uuid -D
+
+```
+
 
 End with an example of getting some data out of the system or using it for a little demo
 
