@@ -1,9 +1,15 @@
 var yo = require("yo-yo")
 const uuidv1 = require("uuid/v1")
-import EventEmitter from 'events'
+//import EventEmitter from 'events'
+import reducer from './reducer'
+const EventEmitter = require("events")
 
+
+const bus = new EventEmitter;
 var numbers = [] // start empty
 var el = list(numbers, update, deleteTodo)
+
+reducer(bus, state)
 
 function list (items, onclick, deleteTodo){
  return yo`<main role="main">
@@ -15,7 +21,7 @@ function list (items, onclick, deleteTodo){
    <ul id="todoList">
      ${items.map(function (item) {
        if(item.status === "pending"){
-          return CreateLi(item);
+        return CreateLi(item);
        }
      })}
    </ul>
@@ -23,7 +29,7 @@ function list (items, onclick, deleteTodo){
    <ul id=“doneList”>
      ${items.map(function (item) {
        if(item.status === "done"){
-         return CreateLi2(item);
+          return CreateLi2(item);
        }
      })}
    </ul>
@@ -32,17 +38,12 @@ function list (items, onclick, deleteTodo){
 
 
 function CreateLi(item){
-  return yo`<li id=${item.id}>
-  ${item.value}
-  <input type="checkbox" onclick=${deleteTodo} class="btn">
-  </li>`
+   bus.emit('todo', item);
+   console.log("juju")
 }
 
 function CreateLi2(item){
-  return yo`<li id=${item.id}>
-  ${item.value}
-  <input type="button" class="button-secondary pure-button" onclick=${deleteTodo} class="btn">
-  </li>`
+   bus.emit('done', item);
 }
 
 function update () {
@@ -51,31 +52,19 @@ function update () {
    todo.id = uuidv1();
    todo.value = document.getElementById("todoVal").value
    todo.status = "pending";
-
- numbers.push(todo)
-
+   numbers.push(todo)
  // construct a new list and efficiently diff+morph it into the one in the DOM
- var newList = list(numbers, update, deleteTodo)
- yo.update(el, newList)
- document.getElementById("todoVal").value = ""
+   var newList = list(numbers, update, deleteTodo)
+   yo.update(el, newList)
+   document.getElementById("todoVal").value = ""
 }
 
 function deleteTodo(ev){
- var id = ev.target.parentNode.getAttribute("id");
- numbers = numbers.filter(function(el){
-   if(el.id === id){
-     if(el.status === "pending"){
-       el.status = "done"
-     }
-     else{
-       el.status = "pending"
-     }
-   }
-   return true;
- })
+  bus.emit('delete', ev);
+ }
 
  var newList = list(numbers, update, deleteTodo)
  yo.update(el, newList)
-}
+
 
 document.body.appendChild(el)
