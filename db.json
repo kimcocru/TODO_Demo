@@ -1,0 +1,12 @@
+{
+  "todos":
+[
+    { "id": 1, "value": "Kim", "done": false }
+  ,
+
+    { "id": 2, "value": "Eros", "done": false }
+  ,
+  
+    { "id": 3, "value": "Andrés", "done": false }
+  ]
+}
